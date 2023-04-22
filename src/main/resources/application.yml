@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: logger-loader-clickhouse
+
+server:
+  port: 8080
+  servlet:
+    context-path: /${spring.application.name}
+
+clickhouse:
+  persistence-enabled: true
+  clickhouse-jdbc-url: "jdbc:clickhouse://localhost:8123"
+  search-table: test_s_stg.logger_search
+
+  socket-timeout: 30000
+  connect-timeout: 10000
+  write-timeout: 10000
+
+  min-interval-between-inserts: 1000
+  batch-size: 1500
+  linger-millis: 10000
+
+  auth:
+    username: admin
+    password: admin
+
+kafka:
+  topic-name: logger.records.store
